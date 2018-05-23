@@ -3,7 +3,7 @@ This repository contains reports of the Phantasma token generation event, which 
 The reports are provided in .csv format, that can be imported into Excel, Google Docs or other programs.
 
 phantasma_transactions.csv contains a list of all transactions sent to the SOUL scripthash address, ordered by main net block inclusion.
-phantasma_totals.csv contains a list of the full addresses that participated in the TGE, and the amount of tokens each one received along with amount of NEO received and NEO that will be refunded.
+phantasma_totals.csv contains a list of the full addresses that participated in the TGE, and the amount of tokens each one received along with amount of NEO received and NEO that will be refunded. The entries in this file are ordered by amount of NEO sent.
 
 ## Generating the reports yourself
 We also provide the C# program used to generate this reports, so you can run itself yourself and confirm the result.
