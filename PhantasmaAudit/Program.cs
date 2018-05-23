@@ -86,15 +86,18 @@ namespace PhantasmaAudit
             total_output.Add($"Address,SOUL received,NEO sent,NEO to be refunded");
             foreach (KeyValuePair<string, decimal> entry in balances.OrderBy(x => x.Value))
             {
+                var total_sent = entry.Value;
                 var refund_amount = entry.Value > 10 ? entry.Value - 10 : 0;
                 var token_amount = (entry.Value > 10 ? 10 : entry.Value) * 273;
 
                 if (extra_refunds.ContainsKey(entry.Key))
                 {
-                    refund_amount += extra_refunds[entry.Key];
+                    var refund_value = extra_refunds[entry.Key];
+                    refund_amount += refund_value;
+                    total_sent += refund_value;
                 }
 
-                total_output.Add($"{entry.Key},{token_amount},{entry.Value},{refund_amount}");
+                total_output.Add($"{entry.Key},{token_amount},{total_sent},{refund_amount}");
             }
 
             File.WriteAllLines(total_output_filename, total_output.ToArray());
